@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 from sqlalchemy.orm import Session
 
-from app.database import get_db
+from database import get_db
 from app.models.empresa import Empresa
 
 router = APIRouter(prefix="/empresas")
