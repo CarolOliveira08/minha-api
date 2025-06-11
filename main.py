@@ -2,6 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from database import engine, Base
 from app.routers import empresa
+# Import models so that SQLAlchemy can register them before table creation
+from app.models import empresa as empresa_model, livro, exemplar
 
 Base.metadata.drop_all(bind=engine)#apaga a memória do banco sempre que rodar o cód.
 Base.metadata.create_all(bind=engine)#cria banco de dados novamente
