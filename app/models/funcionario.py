@@ -11,3 +11,4 @@ class Funcionario(Base):
     data_contratacao = Column(Date, nullable=True)
 
     pessoa = relationship("Pessoa", back_populates="funcionario")
+    emprestimos = relationship("Emprestimo", back_populates="funcionario")

@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from database import engine, Base
-from app.routers import empresa
+from app.routers import empresa, emprestimo as emprestimo_router # Added emprestimo_router
 # Import models so that SQLAlchemy can register them before table creation
 from app.models import (
     empresa as empresa_model,
@@ -10,6 +10,7 @@ from app.models import (
     pessoa,
     cliente,
     funcionario,
+    emprestimo, # Added for Emprestimo model and emprestimo_exemplares_table
 )
 
 #Base.metadata.drop_all(bind=engine)#apaga a memória do banco sempre que rodar o cód.
@@ -22,6 +23,7 @@ def check_api():
     return {"response": "Api Online!"}
 
 app.include_router(empresa.router)
+app.include_router(emprestimo_router.router) # Added emprestimo_router
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=5000, reload=True)
