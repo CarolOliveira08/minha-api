@@ -11,3 +11,4 @@ class Cliente(Base):
     observacoes = Column(String(255), nullable=True)
 
     pessoa = relationship("Pessoa", back_populates="cliente")
+    emprestimos = relationship("Emprestimo", back_populates="cliente")
