@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Boolean, Date, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, Date, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from database import Base
+from .emprestimo import emprestimo_exemplares_table # Import the association table
 
 class Exemplar(Base):
     __tablename__ = "exemplar"
@@ -13,3 +14,4 @@ class Exemplar(Base):
     disponivel = Column(Boolean, default=True)
 
     livro = relationship("Livro", back_populates="exemplares")
+    emprestimos = relationship("Emprestimo", secondary=emprestimo_exemplares_table, back_populates="exemplares")
