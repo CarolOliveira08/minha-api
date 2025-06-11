@@ -12,7 +12,7 @@ from app.models import (
     funcionario,
 )
 
-Base.metadata.drop_all(bind=engine)#apaga a memória do banco sempre que rodar o cód.
+#Base.metadata.drop_all(bind=engine)#apaga a memória do banco sempre que rodar o cód.
 Base.metadata.create_all(bind=engine)#cria banco de dados novamente
 
 app = FastAPI()
