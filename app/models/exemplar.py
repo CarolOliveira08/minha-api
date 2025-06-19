@@ -13,3 +13,4 @@ class Exemplar(Base):
     disponivel = Column(Boolean, default=True)
 
     livro = relationship("Livro", back_populates="exemplares")
+
